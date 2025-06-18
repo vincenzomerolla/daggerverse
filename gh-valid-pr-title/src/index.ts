@@ -1,34 +1,14 @@
-import lint from "@commitlint/lint";
-import { type QualifiedRules, RuleConfigSeverity } from "@commitlint/types";
+import config from '@commitlint/config-conventional';
+import lint from '@commitlint/lint';
 import {
-  dag,
-  object,
-  func,
-  type Secret,
   type Container,
-} from "@dagger.io/dagger";
-
-let rules: QualifiedRules = {
-  "type-case": [RuleConfigSeverity.Error, "always", "lower-case"],
-  "type-empty": [RuleConfigSeverity.Error, "never"],
-  "type-enum": [
-    RuleConfigSeverity.Error,
-    "always",
-    [
-      "build",
-      "chore",
-      "ci",
-      "docs",
-      "feat",
-      "fix",
-      "perf",
-      "refactor",
-      "revert",
-      "style",
-      "test",
-    ],
-  ],
-};
+  type Secret,
+  dag,
+  func,
+  object,
+} from '@dagger.io/dagger';
+// @ts-expect-error
+import createPreset from 'conventional-changelog-conventionalcommits';
 
 @object()
 export class GhValidPrTitle {
@@ -46,18 +26,18 @@ export class GhValidPrTitle {
         repo,
         token: githubToken,
       })
-      .exec(["pr", "view", branch, "--json", "title"]);
-
+      .exec(['pr', 'view', branch, '--json', 'title']);
     let pr = JSON.parse(await container.stdout());
+    let parserPreset = await createPreset({});
+    let report = await lint(pr.title, config.rules, {
+      parserOpts: parserPreset.parserOpts,
+    });
 
-    let report = await lint(pr.title, rules);
+    console.log('Commitlint report:', report);
 
     if (!report.valid) {
-      throw new Error(
-        `\nFailed to pass commitlint: \n${report.errors
-          .map((e) => `- ${e.message}`)
-          .join("\n")}`,
-      );
+      let errors = report.errors.map((e) => `- ${e.message}`).join('\n');
+      throw new Error(`\nFailed to pass commitlint:\n\n${errors}`);
     }
 
     return container;

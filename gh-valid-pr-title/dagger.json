@@ -1,13 +1,14 @@
 {
   "name": "gh-valid-pr-title",
-  "engineVersion": "v0.15.1",
-  "sdk": "typescript",
+  "engineVersion": "v0.18.2",
+  "sdk": {
+    "source": "typescript"
+  },
   "dependencies": [
     {
       "name": "gh",
-      "source": "github.com/sagikazarmark/daggerverse/gh@gh/v0.7.0",
-      "pin": "7adfe94b980c6f54d46b3cef495475a9cd81058d"
+      "source": "github.com/sagikazarmark/daggerverse/gh@gh/v0.11.0",
+      "pin": "c1be27189ce47d28f84014b715f78e47db9fbadc"
     }
-  ],
-  "source": "."
+  ]
 }

@@ -1,18 +1,18 @@
 {
   "type": "module",
-  "devDependencies": {
-    "@biomejs/biome": "^1.9.4"
-  },
   "dependencies": {
-    "@commitlint/lint": "^19.6.0",
-    "@commitlint/types": "^19.5.0",
+    "@commitlint/config-conventional": "19.8.1",
+    "@commitlint/lint": "19.8.1",
+    "@commitlint/types": "19.8.1",
     "@dagger.io/dagger": "./sdk",
-    "typescript": "^5.5.4"
+    "conventional-changelog-conventionalcommits": "9.0.0",
+    "typescript": "5.8.3"
   },
-  "scripts": {
-    "check": "biome check .",
-    "format": "biome format .",
-    "lint": "biome lint ."
+  "dagger": {
+    "runtime": "node@22.16.0"
   },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "packageManager": "npm@10.9.2",
+  "devDependencies": {
+    "@types/conventional-changelog": "6.0.0"
+  }
 }

@@ -1,0 +1,8 @@
+[tools]
+biome = "latest"
+dagger = "0.18.2"
+node = "22.16"
+"ubi:dotenvx/dotenvx" = "latest"
+
+[tasks.check]
+run = "biome check --write"
