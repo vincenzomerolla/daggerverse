@@ -1,5 +1,5 @@
 [tools]
-biome = "latest"
+biome = "1.9.4"
 dagger = "0.18.2"
 node = "22.16"
 "ubi:dotenvx/dotenvx" = "latest"
