@@ -1,6 +1,6 @@
 {
   "name": "gh-valid-pr-title",
-  "engineVersion": "v0.18.2",
+  "engineVersion": "v0.18.12",
   "sdk": {
     "source": "typescript"
   },
