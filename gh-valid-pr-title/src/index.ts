@@ -2,10 +2,10 @@ import config from "@commitlint/config-conventional";
 import lint from "@commitlint/lint";
 import {
   type Container,
-  type Secret,
   dag,
   func,
   object,
+  type Secret,
 } from "@dagger.io/dagger";
 // @ts-expect-error
 import createPreset from "conventional-changelog-conventionalcommits";
