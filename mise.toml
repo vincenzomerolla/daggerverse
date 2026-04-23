@@ -1,8 +1,9 @@
 [tools]
-biome = "2.2.4"
-dagger = "0.18.19"
-node = "22.16"
-"ubi:dotenvx/dotenvx" = "latest"
+biome = "2.4.13"
+dagger = "0.20.6"
+node = "24.15"
+dotenvx = "latest"
+gh = "2.91"
 
 [tasks.check]
 run = "biome check --write"
