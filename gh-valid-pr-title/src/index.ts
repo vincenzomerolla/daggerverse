@@ -17,21 +17,10 @@ export class GhValidPrTitle {
   ): Promise<string> {
     let container = dag
       .container()
-      .from("jdxcode/mise:latest")
-      .withExec(["mise", "use", "--global", "gh@latest"])
+      .from("serversideup/github-cli:2.103.3")
       .withEnvVariable("GH_REPO", repo)
       .withSecretVariable("GITHUB_TOKEN", githubToken)
-      .withExec([
-        "mise",
-        "exec",
-        "--",
-        "gh",
-        "pr",
-        "view",
-        branch,
-        "--json",
-        "title",
-      ]);
+      .withExec(["gh", "pr", "view", branch, "--json", "title"]);
     let pr = JSON.parse(await container.stdout());
     let parserPreset = await createPreset({});
     let report = await lint(pr.title, config.rules, {
