@@ -1,0 +1,12 @@
+{
+  "plugins": ["typescript", "unicorn", "oxc", "import"],
+  "categories": {
+    "correctness": "error"
+  },
+  "rules": {
+    "no-unused-vars": "error",
+    "prefer-const": "off",
+    "typescript/no-non-null-assertion": "off"
+  },
+  "ignorePatterns": ["**/sdk/**", "**/dist/**", "**/node_modules/**"]
+}

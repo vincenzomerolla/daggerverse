@@ -1,9 +1,10 @@
 [tools]
-biome = "2.4.13"
-dagger = "0.20.6"
-node = "24.15"
-dotenvx = "latest"
-gh = "2.91"
+oxlint = "1.91.0"
+oxfmt = "0.76.0"
+dagger = "0.21.7"
+node = "26.13"
+dotenvx = "2.38.2"
+gh = "2.103"
 
 [tasks.check]
-run = "biome check --write"
+run = ["oxlint --fix", "oxfmt"]
